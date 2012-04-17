@@ -11,6 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20120417234136) do
+
+  create_table "codes", :force => true do |t|
+    t.string   "inputs"
+    t.integer  "test_count"
+    t.boolean  "has_three_repeating_inputs"
+    t.boolean  "has_left_right_inputs"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
 
 end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  inputs: MyString
+  test_count: 1
+  has_three_repeating_inputs: false
+  has_left_right_inputs: false
+
+two:
+  inputs: MyString
+  test_count: 1
+  has_three_repeating_inputs: false
+  has_left_right_inputs: false
