@@ -5,3 +5,7 @@
 require File.expand_path('../config/application', __FILE__)
 
 FezMonolith::Application.load_tasks
+
+# Annotate configurations
+ENV['position_in_class']   = "after"
+ENV['position_in_fixture'] = "after"
