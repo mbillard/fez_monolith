@@ -66,12 +66,14 @@ class SequencesController < ApplicationController
     nb_sequences = 10
 
     # Get a random set of X consecutive sequences
-    min_test_count = Sequence.minimum(:test_count)
-    nb_least_tested = Sequence.where(:test_count => [min_test_count, min_test_count + 1]).count - nb_sequences
+    # min_test_count = Sequence.minimum(:test_count)
+    # nb_least_tested = Sequence.where(:test_count => [min_test_count, min_test_count + 1]).count - nb_sequences
 
     # initial_sequence = Sequence.where(:test_count => [min_test_count, min_test_count + 1]).find(:first, :offset => rand(nb_least_tested))
-    initial_sequence = Sequence.find_by_inputs("DOWN DOWN LT RT RT A UP") # the good sequence
-    @sequences = Sequence.where("id >= ?", initial_sequence.id).limit(nb_sequences)
+    @sequences = []
+    @sequences << Sequence.find_by_inputs("DOWN DOWN LT RT RT A UP") # the good sequence
+    @sequences << Sequence.where("id > ?", @sequences[0].id).limit(nb_sequences - 1)
+    @sequences.flatten!
 
     # @matching_count = Sequence.where("match_count IS NOT NULL AND match_count > 0 AND (false_positive_count <= match_count OR false_positive_count IS NULL)").count
   end
