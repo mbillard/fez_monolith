@@ -1,4 +1,5 @@
 class SequencesController < ApplicationController
+  before_filter :load_track
 
   def index
     fetch_more_sequences
@@ -10,22 +11,37 @@ class SequencesController < ApplicationController
 
   def update
     if params[:unconfirm]
-      s = Sequence.find(params[:sequence_id])
-      s.false_positive_count = (s.false_positive_count || 0) + 1
-      s.save!
+      @track.false_positive_count = (@track.false_positive_count || 0) + 1
+      @track.save!
+
+      unless @track.fraud?
+        s = Sequence.find(params[:sequence_id])
+        s.false_positive_count = (s.false_positive_count || 0) + 1
+        s.save!
+      end
 
       fetch_matching_sequences
 
       render :action => :matches
     else
       if params[:match]
-        s = Sequence.find(params[:sequence_id])
-        s.match_count = (s.match_count || 0) + 1
-        s.save!
-      elsif params[:wrong]
-        Sequence.where(:id => params[:sequence_ids].split(',')).each do |s|
-          s.test_count += 1
+        @track.match_count = (@track.match_count || 0) + 1
+        @track.save!
+
+        unless @track.fraud?
+          s = Sequence.find(params[:sequence_id])
+          s.match_count = (s.match_count || 0) + 1
           s.save!
+        end
+      elsif params[:wrong]
+        @track.tested_count = (@track.tested_count || 0) + 1
+        @track.save!
+
+        unless @track.fraud?
+          Sequence.where(:id => params[:sequence_ids].split(',')).each do |s|
+            s.test_count += 1
+            s.save!
+          end
         end
       end
 
@@ -39,6 +55,10 @@ class SequencesController < ApplicationController
   end
 
   private
+
+  def load_track
+    @track = Track.find_or_create_by_ip_address(request.remote_ip)
+  end
 
   def fetch_more_sequences
     nb_sequences = 10

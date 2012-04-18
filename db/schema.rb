@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418041403) do
+ActiveRecord::Schema.define(:version => 20120418114943) do
 
   create_table "sequences", :force => true do |t|
     t.string   "inputs"
@@ -22,6 +22,15 @@ ActiveRecord::Schema.define(:version => 20120418041403) do
     t.datetime "updated_at",                 :null => false
     t.integer  "match_count"
     t.integer  "false_positive_count"
+  end
+
+  create_table "tracks", :force => true do |t|
+    t.string   "ip_address"
+    t.integer  "tested_count"
+    t.integer  "match_count"
+    t.integer  "false_positive_count"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
 end
