@@ -67,7 +67,7 @@ class SequencesController < ApplicationController
     min_test_count = Sequence.minimum(:test_count)
     nb_least_tested = Sequence.where(:test_count => [min_test_count, min_test_count + 1]).count - nb_sequences
 
-    initial_sequence = Sequence.where(:test_count => min_test_count).find(:first, :offset => rand(nb_least_tested))
+    initial_sequence = Sequence.where(:test_count => [min_test_count, min_test_count + 1]).find(:first, :offset => rand(nb_least_tested))
     @sequences = Sequence.where("id > ?", initial_sequence.id).limit(nb_sequences)
 
     @matching_count = Sequence.where("match_count IS NOT NULL AND match_count > 0 AND (false_positive_count <= match_count OR false_positive_count IS NULL)").count
