@@ -1,0 +1,18 @@
+#sequences
+  %table.table.table-striped
+    %tbody
+      - @sequences.each do |s|
+        %tr
+          %td.inputs= s.inputs
+          %td
+            = form_tag update_sequences_path, :method => :post do
+              = hidden_field_tag :sequence_id, s.id
+              = submit_tag "We have a match", :name => "match", :class => "btn btn-success"
+
+  .well.controls
+    = form_tag update_sequences_path, :method => :post do
+      = hidden_field_tag :sequence_ids, @sequences.map(&:id).join(',')
+      = submit_tag "No red cube", :name => "wrong", :class => "btn btn-danger btn-large"
+      %br/
+      = submit_tag "Didn't test", :name => "no_test", :class => "btn"
+
