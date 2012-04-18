@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120417234136) do
+ActiveRecord::Schema.define(:version => 20120417235413) do
 
-  create_table "codes", :force => true do |t|
+  create_table "sequences", :force => true do |t|
     t.string   "inputs"
     t.integer  "test_count"
     t.boolean  "has_three_repeating_inputs"

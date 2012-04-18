@@ -1,4 +1,4 @@
-class Code < ActiveRecord::Base
+class Sequence < ActiveRecord::Base
   attr_accessible :has_left_right_inputs, :has_three_repeating_inputs, :inputs, :test_count
 
   before_create :define_booleans
@@ -7,14 +7,16 @@ class Code < ActiveRecord::Base
 
   # on `before_create`
   def define_booleans
-    self.has_three_repeating_inputs = /(A A A|UP UP UP|DOWN DOWN DOWN|RT RT RT|LT LT LT|LEFT LEFT LEFT|RIGHT RIGHT RIGHT)/ =~ self.sequence
-    self.has_left_right_inputs = /(LEFT|RIGHT)/ =~ self.sequence
+    self.has_three_repeating_inputs = !!(/(A A A|UP UP UP|DOWN DOWN DOWN|RT RT RT|LT LT LT|LEFT LEFT LEFT|RIGHT RIGHT RIGHT)/ =~ self.inputs)
+    self.has_left_right_inputs = !!(/(LEFT|RIGHT)/ =~ self.inputs)
+
+    true
   end
 
 end
 # == Schema Information
 #
-# Table name: codes
+# Table name: sequences
 #
 #  id                         :integer(4)      not null, primary key
 #  inputs                     :string(255)
