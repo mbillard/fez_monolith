@@ -1,0 +1,45 @@
+- tested_count = Sequence.where("test_count > 0").count
+- matching_count = Sequence.where("match_count > 0").count
+- false_positives_count = Sequence.where("false_positive_count > 0").count
+- total_count = Sequence.count
+- progress_percentage = tested_count/total_count
+- false_positive_ratio = matching_count == 0 ? 0 : false_positives_count / matching_count
+
+#progress
+  %table.table.table-striped
+    %tr
+      %td{ :colspan => 2}
+        %h3
+          Progress
+          %small= number_to_percentage(progress_percentage * 100, :precision => 0)
+        .progress.progress-striped.active
+          .bar{ :style => "width:#{(progress_percentage * 100).to_i}%;" }
+
+        %h3
+          Matches / False Positives ratio
+          %small= number_to_percentage(false_positive_ratio * 100, :precision => 0)
+        .progress.progress-striped.progress-danger.active
+          .bar{ :style => "width:#{(false_positive_ratio * 100).to_i}%;" }
+    %tr
+      %th Sequences tested
+      %td
+        = tested_count
+        = "/"
+        = total_count
+        = "(#{number_to_percentage(progress_percentage * 100)})"
+
+    %tr
+      %th Potential matches
+      %td
+        = matching_count
+        = "/"
+        = total_count
+        = "(#{number_to_percentage(matching_count * 100/total_count)})"
+
+    %tr
+      %th False positives
+      %td
+        = false_positives_count
+        = "/"
+        = total_count
+        = "(#{number_to_percentage(false_positives_count * 100/total_count)})"

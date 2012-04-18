@@ -35,6 +35,9 @@ class SequencesController < ApplicationController
     end
   end
 
+  def progress
+  end
+
   private
 
   def fetch_more_sequences

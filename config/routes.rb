@@ -2,6 +2,7 @@ FezMonolith::Application.routes.draw do
 
   get "/" => "sequences#index"
   get "/matches" => "sequences#matches", :as => "matching_sequences"
+  get "/progress" => "sequences#progress", :as => "progress"
   post "/" => "sequences#update", :as => "update_sequences"
 
   # The priority is based upon order of creation:
