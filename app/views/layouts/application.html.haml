@@ -22,9 +22,10 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          %a.brand(href="#") FezMonolith
+          = link_to "FezMonolith", root_path, :class => "brand"
           .container.nav-collapse
             %ul.nav
+              %li= link_to "Continue testing", root_path
               %li= link_to "Potential Matches", matching_sequences_path
 
     .container
