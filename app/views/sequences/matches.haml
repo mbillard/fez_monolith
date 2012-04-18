@@ -1,0 +1,20 @@
+#sequences
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Success Count
+        %th False Positive Count
+        %th
+        %th
+    %tbody
+      - @sequences.each do |s|
+        %tr
+          %td= s.match_count
+          %td= s.false_positive_count || 0
+          %td.inputs= s.inputs
+          %td
+            = form_tag update_sequences_path, :method => :post do
+              = hidden_field_tag :sequence_id, s.id
+              = submit_tag "Confirmed", :name => "match", :class => "btn btn-success"
+              = submit_tag "Negative", :name => "unconfirm", :class => "btn btn-danger"
+

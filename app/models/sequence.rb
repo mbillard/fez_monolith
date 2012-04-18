@@ -26,5 +26,6 @@ end
 #  created_at                 :datetime        not null
 #  updated_at                 :datetime        not null
 #  match_count                :integer(4)
+#  false_positive_count       :integer(4)
 #
 
