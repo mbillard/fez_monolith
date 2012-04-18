@@ -2,7 +2,7 @@ class Track < ActiveRecord::Base
   attr_accessible :false_positive_count, :ip_address, :match_count, :tested_count
 
   def fraud?
-    match_count >= 10
+    (match_count || 0) >= 10
   end
 
 end
