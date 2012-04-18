@@ -42,3 +42,7 @@ gem 'jquery-rails'
 group :development do
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 end
+
+group :production do
+  gem 'pg' # for heroku
+end
