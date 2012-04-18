@@ -4,10 +4,9 @@
 
     %p Note that the sequences can be entered quickly by entering the first one completely, then only the last input of each following sequence.
 
-  - if @matching_count > 0
-    .alert.alert-success
-      We have a reported match!
-      = link_to "Click here to view", matching_sequences_path
+  .alert.alert-success
+    We have a reported match!
+    = link_to "Click here to view", matching_sequences_path
 
   %table.table.table-striped
     %tbody
