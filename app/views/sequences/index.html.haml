@@ -11,7 +11,14 @@
 
   %table.table.table-striped
     %tbody
+      - previous_input = nil
       - @sequences.each do |s|
+        - s_breaks_sequence = previous_input.nil? ? false : !s.inputs.start_with?(previous_input.inputs.gsub(/^\S+\s/, ''))
+        - previous_input = s
+        - if s_breaks_sequence
+          %tr
+            %td{ :colspan => 2 }
+              .alert.alert-danger The sequence breaks here, start enterring inputs from the start of the next sequence.
         %tr
           %td.inputs= s.inputs
           %td
