@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120417235413) do
+ActiveRecord::Schema.define(:version => 20120418033100) do
 
   create_table "sequences", :force => true do |t|
     t.string   "inputs"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20120417235413) do
     t.boolean  "has_left_right_inputs"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
+    t.integer  "match_count"
   end
 
 end

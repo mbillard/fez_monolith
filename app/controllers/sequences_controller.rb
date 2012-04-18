@@ -6,7 +6,9 @@ class SequencesController < ApplicationController
 
   def update
     if params[:match]
-      # todo
+      s = Sequence.find(params[:sequence_id])
+      s.match_count = (s.match_count || 0) + 1
+      s.save!
     elsif params[:wrong]
       Sequence.where(:id => params[:sequence_ids].split(',')).each do |s|
         s.test_count += 1

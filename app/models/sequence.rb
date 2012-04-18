@@ -25,5 +25,6 @@ end
 #  has_left_right_inputs      :boolean(1)
 #  created_at                 :datetime        not null
 #  updated_at                 :datetime        not null
+#  match_count                :integer(4)
 #
 
