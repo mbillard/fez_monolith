@@ -45,7 +45,7 @@ class SequencesController < ApplicationController
 
     # Get a random set of X consecutive sequences
     min_test_count = Sequence.minimum(:test_count)
-    nb_least_tested = Sequence.where(:test_count => min_test_count).count - nb_sequences
+    nb_least_tested = Sequence.where(:test_count => [min_test_count, min_test_count + 1]).count - nb_sequences
 
     initial_sequence = Sequence.where(:test_count => min_test_count).find(:first, :offset => rand(nb_least_tested))
     @sequences = Sequence.where("id > ?", initial_sequence.id).limit(nb_sequences)
