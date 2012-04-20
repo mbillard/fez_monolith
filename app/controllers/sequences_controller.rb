@@ -66,7 +66,7 @@ class SequencesController < ApplicationController
   private
 
   def load_track
-    @track = Track.find_or_create_by_ip_address(request.remote_ip)
+    #@track = Track.find_or_create_by_ip_address(request.remote_ip)
   end
 
   def fetch_more_sequences
