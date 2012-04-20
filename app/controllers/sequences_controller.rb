@@ -60,6 +60,9 @@ class SequencesController < ApplicationController
   def progress
   end
 
+  def about
+  end
+
   private
 
   def load_track

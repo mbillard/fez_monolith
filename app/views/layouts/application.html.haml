@@ -28,6 +28,7 @@
               %li= link_to "Continue testing", root_path
               %li= link_to "Potential Matches", matching_sequences_path
             %ul.nav.pull-right
+              %li= link_to "About", about_path
               %li= link_to "Progress", progress_path
 
     .container
@@ -38,7 +39,10 @@
             = yield
 
       %footer
-        %p &copy; mbillard 2012
+        %p
+          &copy;
+          = link_to "Michel Billard", about_path
+          2012
     /
       Javascripts
       \==================================================

@@ -1,0 +1,23 @@
+#about
+  %h1 About
+
+  %h3 Who
+  %ul
+    %li= link_to "Michel Billard", "http://www.mbillard.com"
+    %li
+      My Twitter:
+      = link_to "@GoodEnough", "http://twitter.com/#!/goodenough"
+    %li
+      Email:
+      = "michel@<span class=\"nospam\">null</span>mbillard.com".html_safe
+
+  %h3 How it was done
+  %ul
+    %li= link_to "Ruby on Rails", "http://rubyonrails.org/"
+    %li= link_to "Heroku", "http://www.heroku.com/"
+    %li= link_to "Bootstrap", "http://twitter.github.com/bootstrap/index.html"
+
+  %h3 Other Links
+  %ul
+    %li= link_to "Source code on GitHub", "https://github.com/mbillard/fez_monolith"
+    %li= link_to "Crowdsourced brute-forcing: how Fez was a coop game for a couple hours", "http://www.crossbrowser.net/528/crowdsourced-brute-forcing-how-fez-was-a-coop-game-for-a-couple-of-hours/"
