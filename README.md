@@ -1,4 +1,8 @@
-What is Fez Monolith
+*This project is no longer in development as the project has ended. Feel free to fork for other uses or message me for additional info.*
+
+----
+
+What is Fez Monolith?
 ====
 
 Fez Monolith is the application that was used to help coordinate the efforts of thousands of users trying to find the sequence for the black monolith puzzle in the Xbox Live Arcade game Fez released on April 13, 2012.
