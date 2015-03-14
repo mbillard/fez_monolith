@@ -1,20 +1,24 @@
 source 'https://rubygems.org'
+ruby '2.1.5'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.21'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+gem 'pg', '~> 0.18.1'
+
+gem 'puma'
 
 gem 'haml'
-gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass', '~> 2.3.2.2'
+gem 'font-awesome-rails', '~> 4.3.0.0'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails',   '~> 3.2.6'
+  gem 'coffee-rails', '~> 3.2.2'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platform => :ruby
@@ -41,8 +45,5 @@ gem 'jquery-rails'
 
 group :development do
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
-end
-
-group :production do
-  gem 'pg' # for heroku
+  gem 'foreman', '~> 0.78.0'
 end
